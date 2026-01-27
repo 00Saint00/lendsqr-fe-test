@@ -1,0 +1,19 @@
+@import "variables";
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fbfbfb;
+
+  &__main {
+    flex: 1;
+    margin-left: 283px;
+    padding: 40px 30px;
+    min-height: 100vh;
+
+    @include breakpointTabletLg {
+      margin-left: 0;
+      padding: 20px 15px;
+    }
+  }
+}

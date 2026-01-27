@@ -1,0 +1,26 @@
+@import "variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: $avenirNext;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  font-family: $avenirNext;
+}

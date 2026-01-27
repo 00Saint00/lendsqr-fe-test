@@ -1,0 +1,68 @@
+@import "variables";
+
+.users {
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: $bluePrimary;
+    font-family: $avenirNext;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+
+    @include breakpointMobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__stat-card {
+    background-color: $colorWhite;
+    border: 1px solid $borderColor;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__stat-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  &__stat-content {
+    flex: 1;
+  }
+
+  &__stat-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: $textPrimary;
+    margin-bottom: 8px;
+    font-family: $avenirNext;
+    text-transform: uppercase;
+  }
+
+  &__stat-count {
+    font-size: 24px;
+    font-weight: 600;
+    color: $bluePrimary;
+    font-family: $avenirNext;
+  }
+}
