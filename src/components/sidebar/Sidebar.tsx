@@ -2,15 +2,16 @@ import { Link, useLocation } from "react-router-dom";
 import { navItems } from "../../core/data";
 import "../../styles/sidebar.scss";
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const location = useLocation();
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar__header">
-        <img src="/images/logo.svg" alt="Lendsqr Logo" className="sidebar__logo" />
-      </div>
-
+    <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar__organization">
         <img src="/images/icons/briefcase.svg" alt="Organization" />
         <span>Switch Organization</span>
@@ -47,6 +48,13 @@ const Sidebar = () => {
           );
         })}
       </nav>
+
+      <div className="sidebar__footer">
+        <button className="sidebar__close-btn" onClick={onClose}>
+          <img src="/images/icons/close-icon.svg" alt="Close sidebar" />
+          <span>Close</span>
+        </button>
+      </div>
     </aside>
   );
 };

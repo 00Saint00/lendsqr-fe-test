@@ -1,0 +1,228 @@
+@use "sass:color";
+@use "variables" as *;
+
+.top-nav-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $colorWhite;
+  border-bottom: 1px solid $borderColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $topNavPadding;
+  z-index: 1001;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05);
+  gap: 15px;
+
+  @include breakpointTabletLg {
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  @include breakpointMobile {
+    padding: 10px 15px;
+    gap: 8px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+
+    @include breakpointMobile {
+      gap: 10px;
+    }
+  }
+
+  &__logo {
+    height: 30px;
+    width: auto;
+
+    @include breakpointMobile {
+      height: 24px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 auto;
+
+    @include breakpointTabletLg {
+      max-width: 200px;
+    }
+
+    @include breakpointMobile {
+      display: none;
+    }
+  }
+
+  &__search-input {
+    flex: 1;
+    height: 40px;
+    border: 2px solid $borderColor;
+    border-radius: 8px 0 0 8px;
+    padding: 0 16px;
+    font-family: $avenirNext;
+    font-size: 14px;
+    color: $textPrimary;
+    outline: none;
+    min-width: 0;
+
+    @include breakpointTabletLg {
+      font-size: 12px;
+      padding: 0 12px;
+    }
+
+    &::placeholder {
+      color: $textPrimary;
+      opacity: 0.6;
+    }
+  }
+
+  &__search-button {
+    height: 40px;
+    width: 56px;
+    background-color: $greenPrimary;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+
+    @include breakpointTabletLg {
+      width: 48px;
+    }
+
+    &:hover {
+      background-color: color.adjust($greenPrimary, $lightness: -5%);
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-shrink: 0;
+
+    @include breakpointTabletLg {
+      gap: 20px;
+    }
+
+    @include breakpointMobile {
+      gap: 12px;
+    }
+  }
+
+  &__notification {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__profile {
+    position: relative;
+  }
+
+  &__profile-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  &__profile-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    @include breakpointMobile {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__profile-name {
+    font-family: $workSans;
+    font-size: 16px;
+    color: $textPrimary;
+    font-weight: 500;
+    white-space: nowrap;
+
+    @include breakpointMobile {
+      display: none;
+    }
+  }
+
+  &__profile-dropdown {
+    width: 7px;
+    height: 4px;
+  }
+
+  &__docs {
+    font-family: $roboto;
+    font-size: 16px;
+    color: $textPrimary;
+    font-weight: 400;
+    white-space: nowrap;
+
+    @include breakpointMobile {
+      display: none;
+    }
+  }
+
+  &__docs:hover {
+    color: $bluePrimary;
+  }
+
+  &__profile-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: $colorWhite;
+    border-radius: 4px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    min-width: 120px;
+    overflow: hidden;
+  }
+
+  &__profile-menu-item {
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: $workSans;
+    font-size: 14px;
+    font-weight: 400;
+    color: $textPrimary;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: block;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: rgba($greenPrimary, 0.1);
+    }
+  }
+}
+

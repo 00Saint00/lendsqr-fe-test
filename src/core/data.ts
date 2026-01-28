@@ -149,12 +149,12 @@ export const navItems = [
     link: "#",
     id: 25,
   },
-  {
-    title: "Systems Messages",
-    icon: "/images/icons/nav-icon-26.svg",
-    link: "#",
-    id: 26,
-  },
+  // {
+  //   title: "Systems Messages",
+  //   icon: "/images/icons/nav-icon-26.svg",
+  //   link: "#",
+  //   id: 26,
+  // },
 ];
 
 export const usersStats = [

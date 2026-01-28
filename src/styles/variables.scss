@@ -1,8 +1,41 @@
 @font-face {
+  font-family: "Roboto";
+  src:
+    local("Roboto"),
+    url("https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxP.ttf")
+      format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src:
+    local("Roboto"),
+    url("https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmWUlfBBc4.ttf")
+      format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src:
+    local("Roboto"),
+    url("https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmEU9fBBc4.ttf")
+      format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Avenir next";
   src:
     local("AvenirNext"),
-    url("/public/font/AvenirNextCyr-Regular.woff") format("truetype");
+    url("/font/AvenirNextCyr-Regular.woff") format("woff");
 }
 
 // Colors
@@ -14,7 +47,12 @@ $borderColor: #545f7d26;
 $errorColor: #e40303;
 // Fonts
 $avenirNext: "Avenir next", sans-serif;
-
+$workSans: "Work Sans", sans-serif;
+$roboto: "Roboto", sans-serif;
+// Layout
+$topNavPadding: 30px;
+$topNavContentHeight: 48px; // Avatar height (tallest element)
+$topNavHeight: 108px; // Calculated: 30px + 48px + 30px
 // Breakpoints
 @mixin breakpointMobile {
   @media (max-width: 599px) {

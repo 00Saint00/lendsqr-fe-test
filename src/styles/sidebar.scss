@@ -1,33 +1,44 @@
-@import "variables";
+@use "variables" as *;
 
 .sidebar {
   width: 283px;
-  height: 100vh;
   background-color: $colorWhite;
   border-right: 1px solid $borderColor;
   display: flex;
   flex-direction: column;
   position: fixed;
   left: 0;
-  top: 0;
+  top: $topNavHeight; // Position below top nav
+  height: calc(100vh - #{$topNavHeight}); // Full height minus top nav
   overflow-y: auto;
   z-index: 1000;
+  transition: transform 0.3s ease;
 
-  &__header {
-    padding: 30px 20px;
-    border-bottom: 1px solid $borderColor;
+  &.closed {
+    transform: translateX(-100%);
   }
 
-  &__logo {
-    height: 30px;
-    width: auto;
+  &.open {
+    transform: translateX(0);
+  }
+
+  @include breakpointTabletLg {
+    // Tablet top nav height: 15px padding + 48px avatar + 15px padding = 78px
+    top: 78px;
+    height: calc(100vh - 78px);
+  }
+
+  @include breakpointMobile {
+    // Mobile top nav height: 10px padding + 36px avatar + 10px padding = 56px
+    top: 56px;
+    height: calc(100vh - 56px);
   }
 
   &__organization {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 30px 20px;
+    gap: 9px;
+    padding: 30px 30px;
     cursor: pointer;
     transition: background-color 0.2s;
 
@@ -37,10 +48,10 @@
 
     span {
       flex: 1;
-      font-size: 12px;
+      font-size: 16px;
       font-weight: 400;
-      color: $textPrimary;
-      font-family: $avenirNext;
+      color: $bluePrimary;
+      font-family: $workSans;
     }
 
     img {
@@ -68,8 +79,10 @@
   &__nav-item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     padding: 12px 30px;
+    margin-bottom: 10px;
+
     text-decoration: none;
     color: $textPrimary;
     font-size: 16px;
@@ -113,12 +126,43 @@
   }
 
   &__nav-text {
+    font-size: 16px;
     font-weight: 400;
+    font-family: $workSans;
   }
 
   &__footer {
-    padding: 20px;
+    padding: 20px 30px;
     border-top: 1px solid $borderColor;
+    margin-top: auto;
+  }
+
+  &__close-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $textPrimary;
+    font-size: 16px;
+    font-family: $workSans;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba($greenPrimary, 0.1);
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    span {
+      font-weight: 400;
+    }
   }
 
   &__logout {
@@ -144,11 +188,14 @@
   }
 
   @include breakpointTabletLg {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    // On mobile/tablet, sidebar is hidden by default unless explicitly opened
+    &.closed {
+      transform: translateX(-100%);
+    }
 
     &.open {
       transform: translateX(0);
     }
   }
 }
+

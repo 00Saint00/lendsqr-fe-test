@@ -1,0 +1,37 @@
+@use "variables" as *;
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+
+  &__menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    border-radius: 4px;
+
+    &:hover {
+      opacity: 0.7;
+      background-color: rgba($bluePrimary, 0.05);
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: $bluePrimary;
+    font-family: $avenirNext;
+  }
+}

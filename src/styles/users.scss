@@ -1,20 +1,9 @@
-@import "variables";
+@use "variables" as *;
 
 .users {
-  &__header {
-    margin-bottom: 40px;
-  }
-
-  &__title {
-    font-size: 24px;
-    font-weight: 500;
-    color: $bluePrimary;
-    font-family: $avenirNext;
-  }
-
   &__stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
     margin-bottom: 40px;
 
@@ -28,8 +17,6 @@
     border: 1px solid $borderColor;
     border-radius: 4px;
     padding: 20px;
-    display: flex;
-    align-items: center;
     gap: 15px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s, box-shadow 0.2s;
@@ -44,6 +31,7 @@
     width: 40px;
     height: 40px;
     object-fit: contain;
+    margin-bottom: 10px;
   }
 
   &__stat-content {
@@ -57,6 +45,7 @@
     margin-bottom: 8px;
     font-family: $avenirNext;
     text-transform: uppercase;
+    margin-bottom: 10px
   }
 
   &__stat-count {
@@ -64,5 +53,187 @@
     font-weight: 600;
     color: $bluePrimary;
     font-family: $avenirNext;
+  }
+
+  &__table-container {
+    margin-top: 40px;
+  }
+
+  &__table-wrapper {
+    background-color: $colorWhite;
+    border-radius: 4px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 600px;
+    box-shadow: #213F7D0F;
+    border: 1px solid #213F7D0F;
+    position: relative;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: $workSans;
+    font-size: 14px;
+    color: $textPrimary;
+
+    thead {
+      background-color: #fbfbfb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+  }
+
+  &__table-header {
+    padding: 20px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $textPrimary;
+    border-bottom: 1px solid $borderColor;
+    white-space: nowrap;
+    position: relative;
+    vertical-align: middle;
+
+    &--sortable {
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: rgba($bluePrimary, 0.05);
+      }
+    }
+
+    &--actions {
+      width: 60px;
+      text-align: center;
+    }
+  }
+
+  &__header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__filter-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+
+  &__table-row {
+    border-bottom: 1px solid $borderColor;
+    transition: background-color 0.2s;
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      background-color: rgba($greenPrimary, 0.02);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:has(.users__actions-menu) {
+      z-index: 1000;
+    }
+  }
+
+  &__table-cell {
+    padding: 20px;
+    vertical-align: middle;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+
+    &--actions {
+      padding: 8px;
+      text-align: center;
+      width: 60px;
+      position: relative;
+      overflow: visible;
+      z-index: 10;
+    }
+  }
+
+  &__actions-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    pointer-events: auto;
+  }
+
+  &__actions-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba($bluePrimary, 0.05);
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  &__actions-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background-color: $colorWhite;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__actions-menu-item {
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: $workSans;
+    font-size: 14px;
+    font-weight: 400;
+    color: $textPrimary;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+
+    img {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background-color: rgba($greenPrimary, 0.1);
+    }
   }
 }
