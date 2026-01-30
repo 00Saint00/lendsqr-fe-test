@@ -8,9 +8,10 @@ interface OutletContext {
 
 interface PageHeaderProps {
   title: string;
+  className?: string;
 }
 
-const PageHeader = ({ title }: PageHeaderProps) => {
+const PageHeader = ({ title, className }: PageHeaderProps) => {
   const { isSidebarOpen, toggleSidebar } = useOutletContext<OutletContext>();
 
   return (
@@ -20,7 +21,7 @@ const PageHeader = ({ title }: PageHeaderProps) => {
           <img src="/images/icons/menu.svg" alt="Open menu" />
         </button>
       )}
-      <h1 className="page-header__title">{title}</h1>
+      <h2 className={`${className ?? ""}`.trim()}>{title}</h2>
     </div>
   );
 };

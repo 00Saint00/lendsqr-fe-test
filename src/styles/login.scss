@@ -5,29 +5,117 @@
   height: 100vh;
   padding: 100px 67px;
 
+  @include breakpointTabletLg {
+    padding: 60px 40px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  @include breakpointMobile {
+    padding: 40px 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    @include breakpointTabletLg {
+      gap: 30px;
+    }
+
+    @include breakpointMobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
   }
 
   &__logo {
     padding: 0 30px 139px;
+
+    @include breakpointTabletLg {
+      padding: 0 20px 80px;
+    }
+
+    @include breakpointMobile {
+      padding: 0 0 40px;
+      text-align: center;
+    }
+
+    &-img {
+      @include breakpointMobile {
+        max-width: 150px;
+        height: auto;
+      }
+    }
   }
 
   &__placeholder {
     width: 100%;
+
+    @include breakpointTabletLg {
+      width: 45%;
+      flex-shrink: 0;
+    }
+
+    @include breakpointMobile {
+      width: 100%;
+      max-width: 300px;
+      order: 1;
+    }
+
+    img {
+      @include breakpointTabletLg {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      @include breakpointMobile {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+    }
   }
 
   &__form {
     width: 100%;
 
+    @include breakpointTabletLg {
+      width: 50%;
+    }
+
+    @include breakpointMobile {
+      width: 100%;
+      order: 2;
+    }
+
     &-container {
+      @include breakpointMobile {
+        max-width: 100%;
+      }
+
       .login__header {
+        @include breakpointMobile {
+          text-align: center;
+        }
+
         &-title {
           font-size: 40px;
           font-weight: 700;
           color: $bluePrimary;
+
+          @include breakpointTabletLg {
+            font-size: 32px;
+          }
+
+          @include breakpointMobile {
+            font-size: 28px;
+          }
         }
 
         &-text {
@@ -35,11 +123,28 @@
           font-size: 20px;
           font-weight: 400;
           color: $textPrimary;
+
+          @include breakpointTabletLg {
+            font-size: 16px;
+          }
+
+          @include breakpointMobile {
+            font-size: 14px;
+            margin-top: 8px;
+          }
         }
       }
 
       .login__form-section {
         margin-top: 60px;
+
+        @include breakpointTabletLg {
+          margin-top: 40px;
+        }
+
+        @include breakpointMobile {
+          margin-top: 30px;
+        }
       }
 
       .login__fields {
@@ -49,11 +154,28 @@
         align-items: center;
         gap: 8px;
 
+        @include breakpointTabletLg {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        @include breakpointMobile {
+          width: 100%;
+          max-width: 100%;
+          height: 48px;
+          padding: 14px 16px;
+          margin-bottom: 20px;
+        }
+
         input {
           border: none;
           outline: none;
           font-size: 14px;
           flex: 1;
+
+          @include breakpointMobile {
+            min-width: 0;
+          }
         }
 
         .input-password {
@@ -62,6 +184,10 @@
           align-items: center;
           flex: 1;
           gap: 8px;
+
+          @include breakpointMobile {
+            min-width: 0;
+          }
         }
 
         .input-error {
@@ -69,6 +195,10 @@
           color: $errorColor;
           white-space: nowrap;
           flex-shrink: 0;
+
+          @include breakpointMobile {
+            font-size: 10px;
+          }
         }
 
         .password-visible {
@@ -78,6 +208,11 @@
           cursor: pointer;
           letter-spacing: 0.1em;
           text-transform: uppercase;
+
+          @include breakpointMobile {
+            flex-shrink: 0;
+            font-size: 11px;
+          }
         }
       }
     }
@@ -89,6 +224,11 @@
     color: $greenPrimary;
     cursor: pointer;
     margin-top: 24px;
+
+    @include breakpointMobile {
+      margin-top: 16px;
+      text-align: center;
+    }
   }
 
   &__button {
@@ -96,9 +236,26 @@
     width: 50%;
     @include buttonStyle;
 
+    @include breakpointTabletLg {
+      width: 100%;
+    }
+
+    @include breakpointMobile {
+      width: 100%;
+      margin-top: 24px;
+      padding: 14px 20px;
+    }
+
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    @include breakpointMobile {
+      text-align: center;
+      font-size: 13px;
     }
   }
 }

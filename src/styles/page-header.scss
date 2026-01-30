@@ -4,7 +4,12 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  @include breakpointMobile {
+    margin-bottom: 20px;
+  } @include breakpointTabletLg {
+    margin-bottom: 24px;
+  }
 
   &__menu-toggle {
     background: none;

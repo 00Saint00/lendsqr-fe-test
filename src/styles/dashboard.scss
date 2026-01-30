@@ -11,6 +11,7 @@
     padding: 40px 60px;
     min-height: calc(100vh - #{$topNavHeight});
     transition: margin-left 0.3s ease;
+    min-width: 0; // Allow flex child to shrink so content doesn't push layout
 
     &.sidebar-open {
       margin-left: 283px; // Account for fixed sidebar width
@@ -23,6 +24,7 @@
     @include breakpointTabletLg {
       margin-left: 0 !important;
       padding: 20px 15px;
+      overflow-x: hidden;
     }
   }
 }

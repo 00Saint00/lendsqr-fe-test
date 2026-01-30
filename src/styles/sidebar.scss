@@ -23,7 +23,6 @@
   }
 
   @include breakpointTabletLg {
-    // Tablet top nav height: 15px padding + 48px avatar + 15px padding = 78px
     top: 78px;
     height: calc(100vh - 78px);
   }

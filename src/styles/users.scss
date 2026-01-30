@@ -1,29 +1,78 @@
 @use "variables" as *;
 
 .users {
+  @include breakpointTabletLg {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  @include breakpointMobile {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   &__stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-bottom: 40px;
 
+    @include breakpointDesktop {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @include breakpointTabletLg {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
     @include breakpointMobile {
       grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
     }
   }
 
   &__stat-card {
     background-color: $colorWhite;
-    border: 1px solid $borderColor;
     border-radius: 4px;
     padding: 20px;
     gap: 15px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 6px rgba($bluePrimary, 0.1);
+
     transition: transform 0.2s, box-shadow 0.2s;
+
+    @include breakpointMobile {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      @include breakpointMobile {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    h3 {
+      @include breakpointMobile {
+        font-size: 12px;
+      }
+    }
+
+    p {
+      @include breakpointMobile {
+        font-size: 18px;
+      }
     }
   }
 
@@ -32,6 +81,10 @@
     height: 40px;
     object-fit: contain;
     margin-bottom: 10px;
+
+    @include breakpointMobile {
+      margin-bottom: 0;
+    }
   }
 
   &__stat-content {
@@ -45,7 +98,27 @@
     margin-bottom: 8px;
     font-family: $avenirNext;
     text-transform: uppercase;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+
+    @include breakpointMobile {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: $bluePrimary;
+    font-family: $workSans;
+
+    @include breakpointTabletLg {
+      font-size: 22px;
+    }
+
+    @include breakpointMobile {
+      font-size: 20px;
+    }
   }
 
   &__stat-count {
@@ -53,10 +126,24 @@
     font-weight: 600;
     color: $bluePrimary;
     font-family: $avenirNext;
+
+    @include breakpointMobile {
+      font-size: 20px;
+    }
   }
 
   &__table-container {
     margin-top: 40px;
+    max-width: 100%;
+
+    @include breakpointTabletLg {
+      margin-top: 30px;
+      overflow-x: hidden;
+    }
+
+    @include breakpointMobile {
+      margin-top: 24px;
+    }
   }
 
   &__table-wrapper {
@@ -68,6 +155,22 @@
     box-shadow: #213F7D0F;
     border: 1px solid #213F7D0F;
     position: relative;
+    -webkit-overflow-scrolling: touch;
+
+    @include breakpointTabletLg {
+      max-height: 500px;
+      overflow-x: auto;
+      overflow-y: auto;
+      max-width: 100%;
+    }
+
+    @include breakpointMobile {
+      overflow: visible;
+      max-height: none;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
   }
 
   &__table {
@@ -76,6 +179,14 @@
     font-family: $workSans;
     font-size: 14px;
     color: $textPrimary;
+
+    @include breakpointTabletLg {
+      min-width: 800px;
+    }
+
+    @include breakpointMobile {
+      display: none;
+    }
 
     thead {
       background-color: #fbfbfb;
@@ -97,6 +208,11 @@
     position: relative;
     vertical-align: middle;
 
+    @include breakpointTabletLg {
+      padding: 16px 12px;
+      font-size: 11px;
+    }
+
     &--sortable {
       cursor: pointer;
       user-select: none;
@@ -110,6 +226,11 @@
     &--actions {
       width: 60px;
       text-align: center;
+      background-color: #fbfbfb;
+
+      @include breakpointTabletLg {
+        width: 50px;
+      }
     }
   }
 
@@ -117,6 +238,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @include breakpointTabletLg {
+      gap: 6px;
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
   }
 
   &__filter-icon {
@@ -125,6 +254,11 @@
     opacity: 0.6;
     cursor: pointer;
     flex-shrink: 0;
+
+    @include breakpointTabletLg {
+      width: 14px;
+      height: 14px;
+    }
   }
 
 
@@ -136,6 +270,10 @@
 
     &:hover {
       background-color: rgba($greenPrimary, 0.02);
+
+      .users__table-cell--actions {
+        background-color: rgba($greenPrimary, 0.02);
+      }
     }
 
     &:last-child {
@@ -154,6 +292,11 @@
     position: relative;
     z-index: 1;
 
+    @include breakpointTabletLg {
+      padding: 16px 12px;
+      font-size: 13px;
+    }
+
     &--actions {
       padding: 8px;
       text-align: center;
@@ -161,6 +304,12 @@
       position: relative;
       overflow: visible;
       z-index: 10;
+      background-color: $colorWhite;
+
+      @include breakpointTabletLg {
+        width: 50px;
+        padding: 8px 4px;
+      }
     }
   }
 
@@ -225,6 +374,7 @@
     align-items: center;
     gap: 8px;
     white-space: nowrap;
+    text-decoration: none;
 
     img {
       width: 16px;
@@ -234,6 +384,242 @@
 
     &:hover {
       background-color: rgba($greenPrimary, 0.1);
+    }
+  }
+
+  &__mobile-cards {
+    display: none;
+
+    @include breakpointMobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__mobile-card {
+    background-color: $colorWhite;
+    border: 1px solid $borderColor;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid $borderColor;
+    }
+
+    &-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: $bluePrimary;
+      font-family: $workSans;
+      margin: 0 0 4px 0;
+    }
+
+    &-org {
+      font-size: 12px;
+      color: $textPrimary;
+      font-family: $workSans;
+      margin: 0;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: $textPrimary;
+      font-family: $workSans;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    &-value {
+      font-size: 13px;
+      color: $bluePrimary;
+      font-family: $workSans;
+      text-align: right;
+      word-break: break-word;
+      min-width: 0;
+    }
+
+    &-actions {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+  }
+
+  // Pagination
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding: 16px 0;
+    gap: 16px;
+
+    @include breakpointTabletLg {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @include breakpointMobile {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__pagination-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $workSans;
+    font-size: 14px;
+    color: $textPrimary;
+
+    @include breakpointMobile {
+      font-size: 13px;
+    }
+  }
+
+  &__pagination-select {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba($bluePrimary, 0.1);
+    color: $bluePrimary;
+    font-family: $workSans;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("/images/icons/dropdown-icon.svg");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 28px;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include breakpointMobile {
+      padding: 6px 10px;
+      padding-right: 24px;
+      font-size: 13px;
+    }
+  }
+
+  &__pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include breakpointMobile {
+      gap: 4px;
+    }
+  }
+
+  &__pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba($bluePrimary, 0.1);
+    color: $bluePrimary;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    @include breakpointMobile {
+      width: 28px;
+      height: 28px;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: rgba($bluePrimary, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+
+      @include breakpointMobile {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &__pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    @include breakpointMobile {
+      gap: 2px;
+    }
+  }
+
+  &__pagination-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: $textPrimary;
+    font-family: $workSans;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    @include breakpointMobile {
+      min-width: 28px;
+      height: 28px;
+      padding: 0 6px;
+      font-size: 12px;
+    }
+
+    &:hover:not(:disabled):not(&--active) {
+      background-color: rgba($bluePrimary, 0.05);
+    }
+
+    &--active {
+      background-color: rgba($bluePrimary, 0.1);
+      color: $bluePrimary;
+      font-weight: 600;
+    }
+
+    &--ellipsis {
+      cursor: default;
+      pointer-events: none;
     }
   }
 }

@@ -3,7 +3,9 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/users/Users";
 import ProtectedRoute from "./components/ProtectedRoute";
+import UsersDetails from "./pages/users/UsersDetails";
 import "./styles/global.scss";
+
 
 function App() {
   return (
@@ -23,6 +25,14 @@ function App() {
             element={
               <ProtectedRoute requireAdmin>
                 <Users />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="users/:slug/:id"
+            element={
+              <ProtectedRoute requireAdmin>
+                <UsersDetails />
               </ProtectedRoute>
             }
           />

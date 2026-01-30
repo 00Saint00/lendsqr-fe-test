@@ -37,7 +37,7 @@ const TopNav = () => {
 
   return (
     <div className="top-nav-main">
-      <div className="top-nav-main__left">
+      <div className="top-nav-main__left"> 
         <img src="/images/logo.svg" alt="logo" className="top-nav-main__logo" />
       </div>
       <div className="top-nav-main__search">
@@ -58,7 +58,12 @@ const TopNav = () => {
             className="top-nav-main__profile-content"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
-            <img src="/images/avatar.svg" alt="avatar" className="top-nav-main__profile-avatar" />
+            <img
+              src={user?.avatar || '/images/avatar.svg'}
+              alt="avatar"
+              className="top-nav-main__profile-avatar"
+
+            />
             <p className="top-nav-main__profile-name">{user?.name || 'User'}</p>
             <img src="/images/icons/dropdown-icon.svg" alt="Dropdown" className="top-nav-main__profile-dropdown" />
           </div>

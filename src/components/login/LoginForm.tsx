@@ -28,7 +28,6 @@ const LoginForm = () => {
     setLoading(true);
     setError(null);
 
-    // Validate login
     const authUser = login(data.email, data.password);
 
     setTimeout(() => {
