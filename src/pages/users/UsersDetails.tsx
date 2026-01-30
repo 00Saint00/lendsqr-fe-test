@@ -11,7 +11,7 @@ const UsersDetails = () => {
   const { id } = useParams<{ slug: string; id: string }>();
   const user = getUsers().find((u) => u.id === id);
   const [activeTab, setActiveTab] = useState("general");
-  const [usersData, setUsersData] = useState<User[]>([]);
+  const [, setUsersData] = useState<User[]>([]);
 
   if (!id || !user) {
     return <div>User not found</div>;

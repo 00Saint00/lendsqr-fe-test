@@ -10,7 +10,7 @@ export interface AuthUser {
   avatar: string;
 }
 
-export const login = (email: string, password: string): AuthUser | null => {
+export const login = (email: string, _password: string): AuthUser | null => {
   const users = getUsers();
   const demoPassword = import.meta.env.VITE_DEMO_PASSWORD || "password123";
   const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
