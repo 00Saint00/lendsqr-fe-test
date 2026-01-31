@@ -83,14 +83,30 @@ export default function UsersFilterPopup({
     ? (() => {
         const pad = 16;
         const popupWidth = 480;
+        const mobileBreakpoint = 600;
         const winW = typeof window !== "undefined" ? window.innerWidth : 800;
-        let left = anchorRect.left;
-        if (left + popupWidth > winW - pad) left = winW - popupWidth - pad;
-        if (left < pad) left = pad;
+        const isMobile = winW < mobileBreakpoint;
+
+        let left: number;
+        if (isMobile) {
+          const mobilePopupWidth = Math.min(320, winW - pad * 2);
+          left = (winW - mobilePopupWidth) / 2;
+        } else {
+          left = anchorRect.left;
+          if (left + popupWidth > winW - pad) left = winW - popupWidth - pad;
+          if (left < pad) left = pad;
+        }
+
+        const top = isMobile ? pad * 2 : anchorRect.bottom + 4;
+        const maxHeight = isMobile
+          ? "calc(100vh - 48px)"
+          : `min(560px, calc(100vh - ${anchorRect.bottom + 8}px))`;
+
         return {
-          top: anchorRect.bottom + 4,
+          top,
           left,
-          maxHeight: `min(560px, calc(100vh - ${anchorRect.bottom + 8}px))`,
+          maxHeight,
+          ...(isMobile && { width: Math.min(320, winW - pad * 2) }),
         };
       })()
     : {

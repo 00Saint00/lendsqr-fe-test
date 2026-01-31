@@ -339,62 +339,6 @@ const Users = () => {
           </table>
         </div>
 
-        {/* Mobile Card View */}
-        <div className="users__mobile-cards">
-          {paginatedUsers.map((user) => (
-            <div key={user.id} className="users__mobile-card">
-              <div className="users__mobile-card-header">
-                <div>
-                  <p className="users__mobile-card-name">{user.name}</p>
-                  <p className="users__mobile-card-org">{user.organization}</p>
-                </div>
-                <div className="users__mobile-card-actions">
-                  <UserRowActions
-                    user={user}
-                    isOpen={openMenuId === user.id}
-                    onToggle={() => {
-                      if (openMenuId !== user.id)
-                        skipNextOutsideClick.current = true;
-                      setOpenMenuId(openMenuId === user.id ? null : user.id);
-                    }}
-                    menuRef={(el) => {
-                      if (el) menuRefs.current[user.id] = el;
-                    }}
-                    onCloseMenu={() => setOpenMenuId(null)}
-                    onStatusChange={(updated) =>
-                      setUsersData((prev) =>
-                        prev.map((u) => (u.id === updated.id ? updated : u)),
-                      )
-                    }
-                  />
-                </div>
-              </div>
-              <div className="users__mobile-card-body">
-                <div className="users__mobile-card-row">
-                  <span className="users__mobile-card-label">Email</span>
-                  <span className="users__mobile-card-value">{user.email}</span>
-                </div>
-                <div className="users__mobile-card-row">
-                  <span className="users__mobile-card-label">Phone</span>
-                  <span className="users__mobile-card-value">{user.phone}</span>
-                </div>
-                <div className="users__mobile-card-row">
-                  <span className="users__mobile-card-label">Date Joined</span>
-                  <span className="users__mobile-card-value">
-                    {formatDate(user.dateJoined)}
-                  </span>
-                </div>
-                <div className="users__mobile-card-row">
-                  <span className="users__mobile-card-label">Status</span>
-                  <span className="users__mobile-card-value">
-                    <StatusBadge value={user.status} />
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
         <div className="users__pagination">
           <div className="users__pagination-info">
             <span>Showing</span>
