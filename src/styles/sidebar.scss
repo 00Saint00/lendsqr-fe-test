@@ -2,8 +2,7 @@
 
 .sidebar {
   width: 283px;
-  background-color: $colorWhite;
-  border-right: 1px solid $borderColor;
+  box-shadow: 4px 0 10px rgba($bluePrimary, 0.08);
   display: flex;
   flex-direction: column;
   position: fixed;
