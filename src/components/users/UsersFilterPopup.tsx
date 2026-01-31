@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import type { User } from "../../data/users";
 import type { UsersFilterValues } from "../../utils/filters";
 import "../../styles/users-filter-popup.scss";
 
