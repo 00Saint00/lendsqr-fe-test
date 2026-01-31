@@ -17,6 +17,23 @@
     gap: 30px;
     margin-bottom: 40px;
 
+    h3{
+      font-size: 14px;
+      font-weight: 500;
+      color: $textPrimary;
+      font-family: $workSans;
+      margin: 12px 0;
+      text-transform: uppercase;
+    }
+
+    p{
+      font-size: 24px;
+      font-weight: 600;
+      color: $bluePrimary;
+      font-family: $workSans;
+      margin-bottom: 10px;
+    }
+
     @include breakpointDesktop {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
