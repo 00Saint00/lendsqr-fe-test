@@ -4,10 +4,8 @@ import { getUsers } from "../../data/users";
 import type { User } from "../../data/users";
 import "../../styles/users.scss";
 import PageHeader from "../../components/page-header/PageHeader";
-import UsersFilterPopup, {
-  type UsersFilterValues,
-  type FilterAnchorRect,
-} from "../../components/users/UsersFilterPopup";
+import UsersFilterPopup, { type FilterAnchorRect } from "../../components/users/UsersFilterPopup";
+import { applyFilters, type UsersFilterValues } from "../../utils/filters";
 import UserRowActions from "../../components/users/UserRowActions";
 
 const ITEMS_PER_PAGE_OPTIONS = [10, 20, 50, 100];
@@ -21,36 +19,6 @@ const defaultFilterValues: UsersFilterValues = {
   dateTo: "",
   status: "",
 };
-
-function applyFilters(users: User[], filters: UsersFilterValues): User[] {
-  return users.filter((user) => {
-    const org = (filters.organization || "").toLowerCase();
-    if (org && user.organization.toLowerCase() !== org) return false;
-
-    const name = (filters.username || "").toLowerCase();
-    if (name && !user.name.toLowerCase().includes(name)) return false;
-
-    const email = (filters.email || "").toLowerCase();
-    if (email && !user.email.toLowerCase().includes(email)) return false;
-
-    const phone = (filters.phone || "").replace(/\D/g, "");
-    if (phone && !user.phone.replace(/\D/g, "").includes(phone)) return false;
-
-    if (filters.dateFrom) {
-      const from = new Date(filters.dateFrom);
-      from.setHours(0, 0, 0, 0);
-      const joined =
-        user.dateJoined instanceof Date
-          ? user.dateJoined
-          : new Date(user.dateJoined);
-      if (joined < from) return false;
-    }
-
-    if (filters.status && user.status !== filters.status) return false;
-
-    return true;
-  });
-}
 
 const Users = () => {
   const [usersData, setUsersData] = useState<User[]>([]);

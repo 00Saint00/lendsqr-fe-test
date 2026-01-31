@@ -90,7 +90,7 @@ export const generateUsers = (count: number = 500): User[] => {
         "Blacklisted",
       ]),
       dateJoined: faker.date.past(),
-      password: import.meta.env.VITE_DEMO_PASSWORD,
+      password: (import.meta.env?.VITE_DEMO_PASSWORD as string | undefined) || "password123",
       role: index === 0 ? "admin" : "user",
       accountNumber: faker.finance.accountNumber(10),
       bvn: faker.number.int({ min: 10000000000, max: 99999999999 }).toString(),

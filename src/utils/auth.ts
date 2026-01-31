@@ -12,7 +12,7 @@ export interface AuthUser {
 
 export const login = (email: string, _password: string): AuthUser | null => {
   const users = getUsers();
-  const demoPassword = import.meta.env.VITE_DEMO_PASSWORD || "password123";
+  const demoPassword = (import.meta as { env?: { VITE_DEMO_PASSWORD?: string } })?.env?.VITE_DEMO_PASSWORD || "password123";
   const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
   if (!user || user.password !== demoPassword) {
     return null;

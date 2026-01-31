@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
 import type { User } from "../../data/users";
+import type { UsersFilterValues } from "../../utils/filters";
 import "../../styles/users-filter-popup.scss";
 
-export interface UsersFilterValues {
-  organization: string;
-  username: string;
-  email: string;
-  phone: string;
-  dateFrom: string;
-  dateTo: string;
-  status: User["status"] | "";
-}
+export type { UsersFilterValues };
 
 const defaultFilters: UsersFilterValues = {
   organization: "",
